@@ -11,16 +11,27 @@ const images = [
     url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1260",
     alt: "Group of Horses Running",
   },
-  {
-    url: "https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272_1280.jpg",
-    alt: "Alpine Spring Meadows",
-  },
-  {
-    url: "https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255_1280.jpg",
-    alt: "Nature Landscape",
-  },
-  {
-    url: "https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg",
-    alt: "Lighthouse Coast Sea",
-  }
 ];
+
+const createGallery = pictureParms => {
+  const galleryItem = document.createElement("li");
+
+  galleryItem.classList.add(`gallery-item`);
+  const galleryImg = document.createElement("img");
+  galleryImg.src = pictureParms.url
+  galleryImg.alt = pictureParms.alt;
+
+  galleryItem.append(galleryImg);
+
+  return galleryItem;
+}
+
+
+
+const galleryArr = images.map(imgParam => createGallery(imgParam));
+
+const galleryList = document.querySelector('.gallery');
+console.log(galleryList)
+
+galleryList.append(...galleryArr);
+
